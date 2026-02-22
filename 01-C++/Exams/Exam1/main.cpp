@@ -8,8 +8,8 @@ using namespace std;
 const int MAX_DOCS = 4;
 const int MAX_CAJAS = 3;
 const int MAX_PESO = 10;
-const int MAX_PENDIENTES = 100;
 
+const int MAX_PENDIENTES = 100;
 // Estructuras
 struct tDocumento
 {
@@ -42,7 +42,7 @@ bool eliminar_documento_caja(const string &code, tCaja &caja);
 int eliminar_documento_archivo(const string &code, tArchivo &arch);
 int colocar_documento_archivo(const tDocumento &doc, tArchivo &arch);
 void procesar_operaciones(ifstream &file, tArchivo &arch, tListaDocs &pendientes);
-void procesar_docs_pendientes(const tListaDocs &pendientes, tArchivo &arch);
+void procesar_docs_pendientes(tListaDocs &pendientes, tArchivo &arch);
 void mostrar_documento(const tDocumento &doc);
 void mostrar_lista_documentos(const tListaDocs &lista);
 void mostrar_caja(const tCaja &caja, int num_caja);
@@ -51,7 +51,39 @@ void mostrar_archivo_docs(const tArchivo &archivo);
 // Programa principal
 int main()
 {
-    // Preuba la aplicacion
+    ifstream file("operaciones.txt");
+
+    if(file){
+        tArchivo archivo;
+        tListaDocs pendientes;
+        
+        pendientes.cont = 0;
+
+        iniciar_archivo_docs(archivo);
+
+        procesar_operaciones(file, archivo, pendientes);
+
+        cout << "\n** ESTADO ACTUAL DEL ARCHIVO DE DOCUMENTOS **" << endl;
+
+        mostrar_archivo_docs(archivo);
+
+        cout << "\n ** DOCUMENTOS PENDIENTES DE ARCHIVAR **" << endl;
+
+        mostrar_lista_documentos(pendientes);
+
+        cout << "\n";
+
+        procesar_docs_pendientes(pendientes, archivo);
+
+        cout << "\n ** ESTADO ACTUAL DEL ARCHIVO DE DOCUMENTOS **:" << endl;
+
+        mostrar_archivo_docs(archivo);
+
+        file.close();
+
+    }else{
+        cout << "ERROR AL ABRIR EL FICHERO" << endl;
+    }
     return 0;
 }
 
@@ -77,10 +109,15 @@ bool insertar_final(const tDocumento &doc, tListaDocs &lista){
 bool colocar_documento_caja(const tDocumento &doc, tCaja &caja){
     bool colocado = false;
 
-    if(caja.peso + doc.peso <= MAX_PESO){
-        insertar_final(doc, caja.lista);
-        caja.peso += doc.peso;
-        colocado = true;
+    if(caja.lista.cont < MAX_DOCS){
+        if(caja.peso + doc.peso <= MAX_PESO){
+            bool insertado = insertar_final(doc, caja.lista);
+            
+            if(insertado == true){
+                caja.peso += doc.peso;
+                colocado = true;
+            }
+        }
     }
 
     return colocado;
@@ -186,7 +223,7 @@ void procesar_operaciones(ifstream &file, tArchivo &arch, tListaDocs &pendientes
             
             int idx = caja - 1;
 
-            if(idx < 0 || idx >= MAX_CAJAS){
+            if(idx >= 0 && idx < MAX_CAJAS){
 
                 if(colocar_documento_caja(doc, arch.cajas[idx])){
                     cout << "DOCUMENTO " << doc.codigo
@@ -229,7 +266,7 @@ void procesar_operaciones(ifstream &file, tArchivo &arch, tListaDocs &pendientes
     }
 }
 
-void procesar_docs_pendientes(const tListaDocs &pendientes, tArchivo &arch){
+void procesar_docs_pendientes(tListaDocs &pendientes, tArchivo &arch){
     cout << "** PROCESAMIENTO DE OPERACIONES PENDIENTES **" << endl;
 
     for (int i = 0; i < pendientes.cont; i++){
@@ -244,6 +281,8 @@ void procesar_docs_pendientes(const tListaDocs &pendientes, tArchivo &arch){
             << idx + 1 << ". EL PESO DE LA CAJA ES: " << arch.cajas[idx].peso 
             << endl;
         }
+        
     }
+    pendientes.cont = 0;
 }
 
