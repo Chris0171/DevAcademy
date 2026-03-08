@@ -3,26 +3,37 @@
 
 using namespace std;
 
-// [ 2, 3, 4, 5, 8 ]
-void bubbleSort(int arr[], int n);
-void bubbleSortOptimized(int arr[], int n);
+struct Usuario
+{
+    int nroUsuario;
+    string nombre;
+};
 
+
+void bubbleSort(int arr[], int n);
+void bubbleSortOptimized(Usuario arr[], int n);
+
+void insertionSort(Usuario arr[], int n);
 
 
 int main()
 {
-    int arr[] = {1, 2, 5, 5, 9, 6};
-    int n = sizeof(arr) / sizeof(arr[0]);
+
+    Usuario arr[] = {
+        {4124, "Juan"},
+        {1231, "Maria"},
+        {3231, "Pedro"},  
+    };
 
     for(auto elem: arr){
-        cout << elem << " ";
+        cout << elem.nroUsuario << " " << elem.nombre << " ";
     }
     cout << endl;
 
-    bubbleSortOptimized(arr, n);
+    bubbleSortOptimized(arr, 3);
 
     for(auto elem: arr){
-        cout << elem << " ";
+        cout << elem.nroUsuario << " " << elem.nombre << " ";
     }
     cout << endl;
 
@@ -44,13 +55,13 @@ void bubbleSort(int arr[], int n){
     cout << "Counter: " << counter << endl;
 }
 
-void bubbleSortOptimized(int arr[], int n){
+void bubbleSortOptimized(Usuario arr[], int n){
     bool cambiado; 
     int counter = 0;
     for (int i = 0; i < n - 1; i++){ // n = 5
         cambiado = false;
         for(int j = 0; j < n - 1 - i; j++){
-            if(arr[j] > arr[j + 1]){
+            if(arr[j].nroUsuario > arr[j + 1].nroUsuario){
                 swap(arr[j], arr[j + 1]);
                 cambiado = true;
             }
@@ -60,4 +71,20 @@ void bubbleSortOptimized(int arr[], int n){
     }
 
     cout << "Counter: " << counter << endl;
+}
+
+// [3 5 7]
+// Complejidad: Mejor caso -> O(n); 
+// Complejidad: Peor caso -> O(n^2); 
+void insertionSort(Usuario arr[], int n){
+    for(int i = 1; i <n; i++){
+        Usuario clave = arr[i];
+        int j = i - 1;
+
+        while(j >= 0 && arr[j].nroUsuario > clave.nroUsuario){
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = clave;
+    }
 }
