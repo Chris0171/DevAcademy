@@ -1,0 +1,137 @@
+/* Christian Milanes */
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: 'Sour Gummy', sans-serif;
+	font-size: 15pt;
+	background-color: #faf3e7;
+	color: #352401;
+}
+
+/* HEADER */
+header {
+	background-color: #352401;
+	color: #faf3e7;
+	text-align: center;
+	padding: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+}
+
+header img {
+	width: 100px;
+}
+
+header h1 {
+	font-size: 2em;
+}
+
+/* MAIN LAYOUT */
+main {
+	display: flex;
+	justify-content: space-between;
+	padding: 30px;
+}
+
+/* PANEL IZQUIERDO */
+aside {
+	width: 45%;
+	max-width: 600px;
+}
+
+aside h2 {
+	font-size: 1.25em;
+	margin-bottom: 15px;
+}
+
+aside ul {
+	margin-bottom: 20px;
+	list-style: circle;
+}
+
+/* TABLA */
+table {
+	margin-left: 0;
+	width: 100%;
+	border: 3px solid #352401;
+	border-collapse: collapse;
+	background-image: url('../images/87.jpg');
+}
+
+td {
+	border: 3px solid #352401;
+	height: 150px;
+}
+
+td img {
+	width: 100%;
+	display: block;
+}
+
+/* CONTENIDO DERECHO */
+.contenido {
+	width: 50%;
+	max-width: 800px;
+}
+
+.contenido p {
+	margin-bottom: 20px;
+	line-height: 1.6;
+}
+
+/* TEXTOS RESALTADOS */
+.resaltado {
+	color: #ceb073;
+	font-size: 1.1em;
+}
+
+/* ENLACE DESTACADO */
+.enlace-destacado {
+	background-color: #ceb073;
+	color: #352401;
+	text-decoration: none;
+	padding: 3px 6px;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+/* IFRAME */
+iframe {
+	margin-top: 20px;
+}
+
+/* FOOTER */
+footer {
+	background-color: #352401;
+	color: #faf3e7;
+	text-align: center;
+	padding: 20px;
+	margin-top: 30px;
+}
+footer a {
+	text-decoration: none;
+	color: #faf3e7;
+}
+aside ul {
+	list-style: none;
+	padding-left: 0;
+}
+
+aside li {
+	margin-bottom: 8px;
+}
+
+.icono {
+	width: 18px;
+	margin-right: 8px;
+	vertical-align: middle;
+}
