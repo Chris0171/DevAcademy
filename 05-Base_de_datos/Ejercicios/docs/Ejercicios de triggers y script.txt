@@ -1,0 +1,54 @@
+Create the shop_triggers database.
+Create the following tables:
+Products: product_id, name, stock, price, discount, special_sale (true/false).
+Orders: order_id, order_date, status, total.
+Order_products: order_id, product_id, quantity, unit_price.
+Audit: audit_id, action, date, description.
+Insert some initial data.
+Create a trigger to automatically set the order date when inserting a new order.
+Create a trigger to update product stock after each order.
+Create an audit trigger to log every new order.
+Create a BEFORE INSERT trigger to prevent orders when stock is insufficient.
+Create a trigger to log deleted orders in the audit table.
+Create a trigger that logs "Product out of stock" when stock reaches 0.
+Validate stock before creating an order (no order if insufficient stock).
+Create a trigger to record canceled orders.
+If a product is on special sale, apply the discount to the unit price and record it in the audit table.
+
+Crea la base de datos company_functions y ejecuta el script adjunto.
+
+
+Crear una función que dado un empleado devuelva el salario mensual. En la tabla se almacena su salario anual.
+
+
+Crear una función que devuelva el nombre completo del empleado (first name + last name).
+
+
+Crear una función que indique si un empleado tiene un salario "Alto" (> 40000) o "Normal".
+
+
+Crear una función que calcule los meses que un empleado ha trabajado desde su fecha de contratación (hire_date).
+
+
+Crear una función que calcule el total de horas trabajadas por un empleado en todos sus proyectos.
+
+
+Crear una función que reciba un id de proyecto y devuelva el presupuesto restante (budget - horas trabajadas * tarifa por hora, suponer 50€/h).
+
+
+Crear una función que devuelva el proyecto con más horas trabajadas acumuladas.
+
+
+Crear una función que reciba el nombre de un departamento y devuelva una cadena de texto indicando el promedio de horas trabajadas por los empleados de ese departamento en todos los proyectos. Si el promedio es superior a 100 horas, la función debe añadir la etiqueta "(Sobrecarga)", de lo contrario, debe añadir "(Normal)".
+
+
+Crear una función que reciba un id de proyecto y determine su estado financiero. La función debe calcular el gasto actual (horas trabajadas × 50€/h) y compararlo con el presupuesto inicial (budget).
+
+
+Si el gasto supera el 80% del presupuesto, debe devolver "Crítico".
+
+
+Si el gasto es menor o igual al 80%, debe devolver "Estable".
+
+
+Si el gasto ya superó el 100%, debe devolver "Presupuesto Excedido".
