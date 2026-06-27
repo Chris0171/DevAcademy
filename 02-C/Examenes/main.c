@@ -141,10 +141,6 @@ int main(){
 
             printf("Coste total de los pedidos de %s: %.2f\n", 
                 nombre, costeTotalPorUsuario(pedidos, numPedidos, nombre));
-
-            
-            
-            
             break;
             case 6: printf("Saliendo...\n"); break;
             default: printf("Opción inválida\n"); break;
@@ -153,4 +149,5 @@ int main(){
     
     return 0;
 }
+
 

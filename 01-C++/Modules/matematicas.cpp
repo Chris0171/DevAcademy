@@ -30,3 +30,24 @@ void mostrarResultados(int a, int b) {
     std::cout << "Multiplicación: " << multiplicar(a, b) << std::endl;
     std::cout << "División: " << dividir(a, b) << std::endl;
 }
+
+
+//Nodo -> Nodo prev, sig
+
+// null->jose->Pepe->Juan->Maria->null
+//       1      2     3     4
+// null
+// jose->null
+typedef struct tElemento{
+    int valor;
+} elemento;
+
+typedef struct{
+    elemento info;
+    int prioridad;
+    nodo *siguiente;
+} nodo;
+
+typedef struct{
+    nodo *head;
+} pila;
