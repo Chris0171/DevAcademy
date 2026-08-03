@@ -117,3 +117,4 @@ nota5 = 3
 nota_final = (nota1 + nota2 + nota3 + nota4 + nota5) / 5
 
 print(nota_final) # Muestra la media de las notas
+
