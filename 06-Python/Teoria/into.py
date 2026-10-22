@@ -118,3 +118,29 @@ nota_final = (nota1 + nota2 + nota3 + nota4 + nota5) / 5
 
 print(nota_final) # Muestra la media de las notas
 
+# ? Salida de datos por pantalla 
+# Caracteres     ||     Acción
+# \n             ||     Salto de línea
+# \t             ||     Tabulación
+# \\             ||     Barra invertida
+# \'             ||     Comilla simple
+# \"             ||     Comilla doble
+
+numeros = input("ingrese 3 numeros separados por un espacio: ")
+# 1 2 3           01234
+# numeros(str) = "1 2 3"
+
+numero_1 = int(numeros[0]) # 1
+numero_2 = int(numeros[2]) # 2
+numero_3 = int(numeros[4]) # 3
+
+numero_lista = numeros.split(" ")
+
+print(numero_lista)
+
+numero_lista[0] = int(numero_lista[0])
+numero_lista[1] = int(numero_lista[1])
+numero_lista[2] = int(numero_lista[2])
+print(numero_lista)
+
+
