@@ -22,9 +22,6 @@ int main()
 
 
     cout << opciones[opcion - 1] << endl;
-
-
-
    
     return 0;
 }
