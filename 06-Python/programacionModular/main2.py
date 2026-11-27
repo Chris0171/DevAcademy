@@ -1,6 +1,7 @@
 from funciones import pedir_nombre, pedir_edad, es_mayor_de_edad
-
+# from nombre_modulo import nombre
 import operaciones
+
 
 
 def main():
